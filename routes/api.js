@@ -173,8 +173,13 @@ exports.add = (dir) => {
             var album = {};
 
             var postedAlbum = JSON.parse(req.body.album);
+            var _featuredItem = false;
 
-            if(typeof postedAlbum._id !== 'undefined'){
+            if(req.body.featured !== "undefined"){
+                _featuredItem = true;
+            }
+
+            if(typeof postedAlbum._id !== "undefined"){
                 
                 album = {
                     "name" : postedAlbum.name,
@@ -196,7 +201,7 @@ exports.add = (dir) => {
                 "size" : req.file.size,
                 "thumbnailPath" : thumbnailSavePathRelative,
                 "originalPath" : savePathRelative,
-                "featured" : req.body.featured,
+                "featured" : _featuredItem,
                 "publicSnap" : req.body.publicSnap,
                 "album" : album,
                 "unMarkedThumbnailPath" : unMarkedThumbnailPath

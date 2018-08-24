@@ -76,7 +76,8 @@ app.delete("/api/albums/:id", auth, albumRoute.delete);
 
 
 //Users
-app.post("/api/register", auth, usersRoute.register); //only i can register users
+// app.post("/api/register", auth, usersRoute.register); //only i can register users
+app.post("/api/register", usersRoute.register); //only i can register users
 app.post("/api/login", usersRoute.login);
 app.get("/api/profile/:username", auth, usersRoute.profileRead);
 app.get("/api/users", auth, usersRoute.list);
